@@ -1,0 +1,16 @@
+CREATE OR REPLACE TABLE thinking-prism-375117.dezoomcamp.exrides_partitioned_clustered
+PARTITION BY DATE(pickup_datetime)
+CLUSTER BY Affiliated_base_number AS
+SELECT * FROM `thinking-prism-375117.dezoomcamp.exrides2`;
+
+
+
+SELECT DISTINCT(affiliated_base_number)
+FROM thinking-prism-375117.dezoomcamp.rides
+WHERE DATE(pickup_datetime) BETWEEN '2019-03-01' AND '2019-03-31';
+
+
+
+SELECT DISTINCT(affiliated_base_number)
+FROM thinking-prism-375117.dezoomcamp.exrides_partitioned_clustered
+WHERE DATE(pickup_datetime) BETWEEN '2019-03-01' AND '2019-03-31';
